@@ -98,6 +98,6 @@ if __name__ == '__main__':
     agent = random.choice(agents)
     salt = salt()
     sign = sign(i)
-    ts = time.time() * 10000
+    ts = time.time() * 1000
     bv = md5(agent.encode('utf-8')).hexdigest()
     fanyi_youdao(i)

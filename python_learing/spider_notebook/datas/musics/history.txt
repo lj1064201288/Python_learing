@@ -1,0 +1,15 @@
+/home/tlxy/tulingxueyuan/python_learing/__init__.py
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/__init__.py
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/scrapy_note
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/test_selenium.py
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/seleniume_music.py
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/Cookies_taobao.py
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/music_163.py
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/yuxiang_jiaoxue/login_huawei.py
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/yuxiang_jiaoxue/ssl_urllib.py
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/yuxiang_jiaoxue/baidu_fanyi.py
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/yuxiang_jiaoxue/youdao_fanyi.py
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/yuxiang_jiaoxue/datas_base.py
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/yuxiang_jiaoxue/baidu_images.py
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/yuxiang_jiaoxue/baidu_tieba_spider.py
+/home/tlxy/tulingxueyuan/python_learing/spider_notebook/yuxiang_jiaoxue/zuihaodaxue_exercise.py
