@@ -6,7 +6,7 @@
 
 import random
 import requests
-from pymongo import MongoClient
+from Mongodb_Sql import Mongo_DB
 from bs4 import BeautifulSoup
 
 agents = [
@@ -21,8 +21,13 @@ agents = [
 
 
 headers = {
-    'User-Agent': random.choice(agents)
+    'User-Agent': random.choice(agents),
+    'upgrade-insecure-requests': '1',
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
 }
+
+
+Mongo_DB = Mongo_DB('kg_music', 'rank')
 
 # 爬去酷狗top500的歌曲信息
 def kg_spider(url):
@@ -36,30 +41,29 @@ def kg_spider(url):
         if res.status_code == 200:
             html = res.text
             soup = BeautifulSoup(html, 'lxml')
-            rank = soup.select('.pc_temp_num')
-            title = soup.select('.pc_temp_songname')
-            songer_time = soup.select('.pc_temp_time')
-            ranks = []
-            titles = []
-            songer_times = []
-            for r in rank:
-                d = r.get_text().strip()
-                ranks.append(d)
-            for t in title:
-                b = t.get_text().replace(' ', '')
-                titles.append(b)
-            for s in songer_time:
-                a = s.get_text().strip()
-                songer_times.append(a)
-            datas = zip(ranks, titles, songer_times)
-            print(datas)
-            items = []
-            for data in datas:
-                items.append(data)
 
-            print(items)
-            # ranks.append(r.get_text().strip() for r in rank)
-            # print(list(ranks))
+            # 获取排名信息
+            ranks = soup.select('.pc_temp_num')
+            # 获取歌手与歌曲名称信息
+            singers = soup.select('.pc_temp_songname')
+            # 获取歌曲时间信息
+            song_times = soup.select('.pc_temp_time')
+            for rank, singer, times in zip(ranks, singers, song_times):
+                rank = rank.get_text().strip()
+                singer_name = singer.get('title').split('-')[0]
+                song_name = singer.get('title').split('-')[1]
+                song_time = times.string.strip()
+                items = {
+                    'rank':rank,
+                    'singer_name':singer_name,
+                    'song_name':song_name,
+                    'song_time':song_time
+                }
+                print(items)
+                Mongo_DB.open_data()
+                Mongo_DB.insert_data(items)
+                Mongo_DB.close_data()
+
     except Exception as e:
         print(e.args)
 
@@ -71,4 +75,3 @@ if __name__ == "__main__":
 
     for url in urls:
         kg_spider(url)
-        break

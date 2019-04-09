@@ -48,7 +48,6 @@ def get_json(key, page):
     }
 
     url = base_url + parse.urlencode(data)
-    print(url)
     req = request.Request(url, headers=headers)
     try:
         response = request.urlopen(req)
