@@ -49,7 +49,6 @@ class Ibaotu_Spider(object):
         else:
             print('已经爬取完毕,谢谢使用!')
 
-
     def write_vedio(self, url, title):
         '''
         获取到视频链接,以及标题进行保存
@@ -61,7 +60,6 @@ class Ibaotu_Spider(object):
         response = requests.get(url, headers=self.headers)
         with open('../datas/videos/' + title + '.mp4', 'wb') as file:
             file.write(response.content)
-
 
 if __name__ == '__main__':
     '''
